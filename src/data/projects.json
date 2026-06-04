@@ -1,0 +1,38 @@
+[
+  {
+    "number": "01",
+    "category": "Agentic AI · Legal Tech",
+    "name": "Legal Counsel AI",
+    "shortDescription": "Enterprise-grade, production-ready AI agent workspace designed for corporate contract negotiation, risk mitigation analysis, and human-in-the-loop legal redlining.",
+    "fullDescription": "Built on an asynchronous LangGraph.js architecture, this system orchestrates multiple specialized AI agents with memory state. Feature set includes multi-modal file parsing, automated risk detection, secure human-in-the-loop authorization interlocks via Model Context Protocol (MCP), and S3-compatible cloud storage integration.",
+    "techStack": "LangGraph.js, Next.js, OpenAI GPT-4o-mini, Prisma, PostgreSQL, Docker, AWS S3/Cloudflare R2.",
+    "githubUrl": "https://github.com/RAKSHEDHA/Legal-Counsel-AI",
+    "liveUrl": "https://legal-counsel-ai.vercel.app/",
+    "blogUrl": "https://medium.com/@rakshecode/building-legal-counsel-ai-an-enterprise-multi-agent-platform-for-contract-analysis-and-a4451a972a70",
+    "previewImage": "/image3/project1.png"
+  },
+  {
+    "number": "02",
+    "category": "Multi-Agent · RAG Engine",
+    "name": "DevSeek",
+    "shortDescription": "A specialized, multi-agent search and synthesis engine engineered exclusively for software development and technical research.",
+    "fullDescription": "Implementing a custom RAG architecture, DevSeek directly queries authoritative developer domains (e.g., GitHub, MDN, Dev.to). The system uses a parallelized multi-agent workflow powered by Google Gemini 1.5 Pro to bypass SEO low-signal content and stream context-aware, highly technical resolutions to client queries.",
+    "techStack": "Next.js, Google Gemini 1.5 Pro, Exa AI, Tailwind CSS, React Query.",
+    "githubUrl": "https://github.com/RAKSHEDHA/DEVSEEK",
+    "liveUrl": "https://devseek-smoky.vercel.app/",
+    "blogUrl": "https://medium.com/@rakshecode/building-devseek-an-ai-powered-engineering-intelligence-engine-for-developers-e7f3f32b170a",
+    "previewImage": "/image3/project2.png"
+  },
+  {
+    "number": "03",
+    "category": "DevSecOps · CI/CD Security",
+    "name": "ZeroTrust PR",
+    "shortDescription": "Enterprise-grade, autonomous security auditing tool that shifts application security left within the CI/CD pipeline.",
+    "fullDescription": "Orchestrating the GitHub REST API and Google's Gemini 1.5 Pro reasoning engine, ZeroTrust PR ingests raw pull request diffs and enforces strict Zod validation schemas. It deterministically hunts and visually identifies critical OWASP Top 10 vulnerabilities (e.g., SQLi, XSS, hardcoded secrets) prior to merge.",
+    "techStack": "Next.js, Vercel AI SDK, Gemini 1.5 Pro, Zod, GitHub API, Tailwind CSS.",
+    "githubUrl": "https://github.com/RAKSHEDHA/ZeroTrustPR",
+    "liveUrl": "https://zero-trust-pr.vercel.app/",
+    "blogUrl": "https://medium.com/@nadummy17/building-zerotrust-pr-an-ai-powered-security-auditor-for-github-pull-requests-4411830defb8",
+    "previewImage": "/image3/project3.png"
+  }
+]
