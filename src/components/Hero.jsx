@@ -148,7 +148,7 @@ export default function Hero() {
             {/* The actual photo container */}
             <div className="absolute inset-0 overflow-hidden bg-white">
               <img 
-                  src="public/src/images/about.png" 
+                  src="/images/about.png" 
                   alt="Rakshedha - AI Engineer" 
                   className="w-full h-full object-cover transition-all duration-700 scale-105"
               />
