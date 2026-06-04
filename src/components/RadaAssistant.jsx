@@ -45,7 +45,7 @@ const RadaAssistant = ({ onClose }) => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isTyping]);
 
-  // 1. Load Standard Browser Text-to-Speech voices (Targeting Indian English Female)
+  // Load Standard Browser Text-to-Speech voices (Targeting Indian English Female)
   useEffect(() => {
     const loadVoices = () => {
       const voices = window.speechSynthesis.getVoices();
@@ -75,7 +75,7 @@ const RadaAssistant = ({ onClose }) => {
     return () => { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); };
   }, []);
 
-  // 2. Audio browser bypass unlock
+  // Audio browser bypass unlock
   const unlockAudio = () => {
     if (!audioUnlocked && 'speechSynthesis' in window) {
       const silentUtterance = new SpeechSynthesisUtterance('');
@@ -85,7 +85,7 @@ const RadaAssistant = ({ onClose }) => {
     }
   };
 
-  // 3. THE INTEGRATED HYBRID ROUTER LOGIC
+  // THE INTEGRATED HYBRID ROUTER LOGIC
   const processMessage = async (textToProcess) => {
     if (!textToProcess.trim()) return;
 
@@ -108,14 +108,10 @@ const RadaAssistant = ({ onClose }) => {
       if (lowerInput.includes('skill') || lowerInput.includes('tech') || lowerInput.includes('stack')) {
         foundReply = `Rakshedha specializes in AI Engineering. Her full stack expertise includes: ${localBrain.skills.join(', ')}.`;
       } 
-      
-      // JARVIS-STYLE WEBSITE NAVIGATION FOR PORTFOLIO
       else if (lowerInput.includes('portfolio') || lowerInput.includes('project') || lowerInput.includes('work')) {
         foundReply = "I am pulling up Rakshedha's cinematic animated intro right now. Enjoy the showcase!";
-        
-        // Wait 2.5 seconds for Rada to speak, then take action!
         setTimeout(() => {
-          onClose(); // Instantly close the chat overlay
+          onClose(); 
           const videoSection = document.getElementById('video-intro');
           if (videoSection) {
             videoSection.scrollIntoView({ behavior: 'smooth' });
@@ -124,18 +120,24 @@ const RadaAssistant = ({ onClose }) => {
           }
         }, 2500); 
       } 
-      
       else if (lowerInput.includes('resume') || lowerInput.includes('cv')) {
-        foundReply = "Sure! You can access her credentials right here: [Download Rakshedha's Resume](/resume.pdf)";
-      } else if (lowerInput.includes('contact') || lowerInput.includes('email')) {
-        foundReply = `You can get in touch with her via LinkedIn, or drop a direct inquiry here: [Email Rakshedha](mailto:${localBrain.socials.email}).`;
-      } else if (lowerInput.includes('github') || lowerInput.includes('linkedin') || lowerInput.includes('social')) {
+        foundReply = "Sure! You can access her credentials right here: [Download Rakshedha's Resume](/RAKSHEDHA RESUME.pdf)";
+      } 
+      else if (lowerInput.includes('github') && !lowerInput.includes('linkedin')) {
+        foundReply = `You can check out her code repositories here: [GitHub](${localBrain.socials.github})`;
+      } 
+      else if (lowerInput.includes('linkedin') && !lowerInput.includes('github')) {
+        foundReply = `You can connect with her professionally right here: [LinkedIn](${localBrain.socials.linkedin})`;
+      } 
+      else if (lowerInput.includes('contact') || lowerInput.includes('email')) {
+        foundReply = `You can get in touch with her via LinkedIn, or drop a direct inquiry here: [Email Rakshedha](mailto:${localBrain.socials.email})`;
+      } 
+      else if (lowerInput.includes('social') || lowerInput.includes('links')) {
         foundReply = `Explore her platforms: [GitHub](${localBrain.socials.github}) or connect on [LinkedIn](${localBrain.socials.linkedin}).`;
       }
     }
 
     if (foundReply) {
-      // Execute Direct Local Return (0ms Latency)
       setTimeout(() => {
         setMessages(prev => [...prev, { role: 'assistant', content: foundReply }]);
         setIsTyping(false);
@@ -176,7 +178,7 @@ const RadaAssistant = ({ onClose }) => {
     latestProcessMessage.current = processMessage;
   });
 
-  // 4. CONTINUOUS SPEECH RECOGNITION LOGIC
+  // CONTINUOUS SPEECH RECOGNITION LOGIC
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) {
@@ -203,7 +205,6 @@ const RadaAssistant = ({ onClose }) => {
 
         if (finalTranscript) {
           setInput(''); 
-          // Instantly process the text without turning the mic off!
           if (latestProcessMessage.current) {
             latestProcessMessage.current(finalTranscript);
           }
@@ -211,14 +212,12 @@ const RadaAssistant = ({ onClose }) => {
       };
 
       recognition.onerror = (event) => {
-        // Only completely shut down if permission is denied
         if (event.error === 'not-allowed') {
           isMicActiveRef.current = false;
           setIsListening(false);
         }
       };
 
-      // AUTO-RESTART LOOP: Force it back on if browser stops it naturally
       recognition.onend = () => {
         if (isMicActiveRef.current && !window.speechSynthesis.speaking) {
           try { recognition.start(); } catch(e) {}
@@ -242,12 +241,10 @@ const RadaAssistant = ({ onClose }) => {
       utterance.rate = 1.0; 
       utterance.pitch = 1.1; 
       
-      // ECHO CANCELLATION: Turn off the mic while Rada is talking
       if (isMicActiveRef.current && recognitionRef.current) {
         try { recognitionRef.current.stop(); } catch(e) {}
       }
 
-      // ECHO CANCELLATION: Turn the mic instantly back on when she finishes
       utterance.onend = utterance.onerror = () => {
         if (isMicActiveRef.current && recognitionRef.current) {
           try { recognitionRef.current.start(); } catch(e) {}
@@ -273,17 +270,52 @@ const RadaAssistant = ({ onClose }) => {
     }
     
     if (isMicActiveRef.current) {
-      // User clicked MUTE
       isMicActiveRef.current = false;
       setIsListening(false);
       try { recognitionRef.current.stop(); } catch(e) {}
     } else {
-      // User clicked UNMUTE
       if ('speechSynthesis' in window) window.speechSynthesis.cancel();
       isMicActiveRef.current = true;
       setIsListening(true);
       try { recognitionRef.current.start(); } catch(e) {}
     }
+  };
+
+  // UPDATED: Secure Markdown Link Parser with Auto-Download for PDFs
+  const renderMessage = (text) => {
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = linkRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      
+      const linkUrl = match[2];
+      const isPdf = linkUrl.toLowerCase().endsWith('.pdf');
+
+      parts.push(
+        <a 
+          key={match.index} 
+          href={linkUrl} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          // If it's a PDF, force the browser to download it instead of opening it!
+          download={isPdf ? "Rakshedha_Resume.pdf" : undefined}
+          className="text-blue-400 font-bold hover:text-blue-300 underline underline-offset-4 decoration-blue-500/50 hover:decoration-blue-300 transition-colors drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]"
+        >
+          {match[1]}
+        </a>
+      );
+      lastIndex = linkRegex.lastIndex;
+    }
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
   };
 
   return (
@@ -315,7 +347,7 @@ const RadaAssistant = ({ onClose }) => {
               {messages.map((msg, idx) => (
                 <motion.div key={idx} initial={{ opacity: 0, y: 10, scale: 0.98 }} animate={{ opacity: 1, y: 0, scale: 1 }} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] px-5 py-4 text-sm md:text-base leading-relaxed shadow-lg ${msg.role === 'user' ? 'bg-white/15 text-white rounded-3xl rounded-br-sm backdrop-blur-md' : 'bg-black/50 border border-white/10 text-white/90 rounded-3xl rounded-bl-sm backdrop-blur-md'}`}>
-                    {msg.content}
+                    {renderMessage(msg.content)}
                   </div>
                 </motion.div>
               ))}

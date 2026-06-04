@@ -4,6 +4,15 @@ import { FiGithub as Github, FiLinkedin as Linkedin } from 'react-icons/fi';
 import { ArrowDown } from 'lucide-react';
 
 export default function Hero() {
+  const handleResumeDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/RAKSHEDHA(RESUME).pdf';
+    link.download = 'RAKSHEDHA(RESUME).pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       {/* --- HERO SECTION --- */}
@@ -177,7 +186,10 @@ export default function Hero() {
 </p>
 
             <div>
-              <button className="px-8 py-3 border-2 border-black text-black font-bold text-sm tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-colors">
+              <button 
+                onClick={handleResumeDownload}
+                className="px-8 py-3 border-2 border-black text-black font-bold text-sm tracking-[0.2em] uppercase hover:bg-black hover:text-white transition-colors cursor-pointer"
+              >
                 Get My Resume
               </button>
             </div>
