@@ -38,7 +38,7 @@ export default function Navbar() {
           <div>
             <a 
               href="#rada" 
-              className="text-xs lg:text-sm font-bold uppercase tracking-widest text-black transition-opacity duration-300 cursor-pointer hover:opacity-70"
+              className="text-xs lg:text-sm font-bold uppercase tracking-widest text-white transition-opacity duration-300 cursor-pointer hover:opacity-70"
             >
               Rada AI Assistant
             </a>
@@ -51,7 +51,7 @@ export default function Navbar() {
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-xs lg:text-sm font-bold uppercase tracking-widest text-black/70 hover:text-black transition-colors duration-300"
+                    className="text-xs lg:text-sm font-bold uppercase tracking-widest text-white/70 hover:text-white transition-colors duration-300"
                   >
                     {link.name}
                   </a>
@@ -66,13 +66,13 @@ export default function Navbar() {
               href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=rakshedhab@gmail.com&subject=Let's%20Connect&body=Hi%20Rakshedha,%0A%0AI'd%20like%20to%20discuss%20a%20project%20with%20you."
               target="_blank"
               rel="noreferrer"
-              className="hidden md:inline-block px-6 py-2 border-2 border-black bg-white text-black text-sm font-bold uppercase tracking-wider"
+              className="hidden md:inline-block px-6 py-2 border-2 border-white bg-white text-black text-sm font-bold uppercase tracking-wider"
             >
               EMAIL ME
             </a>
 
             <button
-              className="xl:hidden text-black transition-colors z-[210]"
+              className="xl:hidden text-white transition-colors z-[210]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
@@ -94,7 +94,7 @@ export default function Navbar() {
               <a
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl tracking-[0.2em] uppercase font-black text-black"
+                className="text-2xl tracking-[0.2em] uppercase font-black text-white"
               >
                 {link.name}
               </a>
@@ -106,7 +106,7 @@ export default function Navbar() {
               target="_blank"
               rel="noreferrer"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="inline-block px-8 py-3 border-2 border-black bg-white text-black font-black text-sm uppercase tracking-widest"
+              className="inline-block px-8 py-3 border-2 border-white bg-white text-black font-black text-sm uppercase tracking-widest"
             >
               EMAIL ME
             </a>

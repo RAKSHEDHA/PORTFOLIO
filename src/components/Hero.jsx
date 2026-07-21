@@ -6,8 +6,8 @@ import { ArrowDown } from 'lucide-react';
 export default function Hero() {
   const handleResumeDownload = () => {
     const link = document.createElement('a');
-    link.href = '/RAKSHEDHA(RESUME).pdf';
-    link.download = 'RAKSHEDHA(RESUME).pdf';
+    link.href = '/RAKSHEDHA.pdf';
+    link.download = 'RAKSHEDHA.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

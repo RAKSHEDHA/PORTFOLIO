@@ -121,7 +121,7 @@ const RadaAssistant = ({ onClose }) => {
         }, 2500); 
       } 
       else if (lowerInput.includes('resume') || lowerInput.includes('cv')) {
-        foundReply = "Sure! You can access her credentials right here: [Download Rakshedha's Resume](/RAKSHEDHA RESUME.pdf)";
+        foundReply = "Sure! You can access her credentials right here: [Download Rakshedha's Resume](/RAKSHEDHA.pdf)";
       } 
       else if (lowerInput.includes('github') && !lowerInput.includes('linkedin')) {
         foundReply = `You can check out her code repositories here: [GitHub](${localBrain.socials.github})`;
@@ -303,7 +303,7 @@ const RadaAssistant = ({ onClose }) => {
           target="_blank" 
           rel="noopener noreferrer" 
           // If it's a PDF, force the browser to download it instead of opening it!
-          download={isPdf ? "Rakshedha_Resume.pdf" : undefined}
+          download={isPdf ? "RAKSHEDHA.pdf" : undefined}
           className="text-blue-400 font-bold hover:text-blue-300 underline underline-offset-4 decoration-blue-500/50 hover:decoration-blue-300 transition-colors drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]"
         >
           {match[1]}
