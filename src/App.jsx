@@ -8,14 +8,13 @@ import Navbar from './components/Navbar';
 import ProjectsSection from './components/ProjectsSection';
 import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection';
-import ServicesSection from './components/ServicesSection';
 import RadaAssistant from './components/RadaAssistant';
 
 function App() {
   const [isRadaOpen, setIsRadaOpen] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
 
-  // Handle hash-based navigation for Rada AI Assistant
+  // Handle hash-based navigation for RADA AI Assistant
   useEffect(() => {
     const handleHashChange = () => {
       if (window.location.hash === '#rada') {
@@ -36,7 +35,9 @@ function App() {
   if (!introComplete) {
     return (
       <IntroScreen
-        onComplete={() => setIntroComplete(true)}
+        onComplete={() => {
+          setIntroComplete(true);
+        }}
       />
     );
   }
@@ -52,9 +53,6 @@ function App() {
       <TechStack />
       <ProjectsSection />
       <AchievementsSection />
-      <ServicesSection />
-
-      {/* Final Contact Section */}
       <ContactSection />
 
       {/* RADA AI Assistant Overlay */}
@@ -85,3 +83,4 @@ function App() {
 }
 
 export default App;
+

@@ -1,8 +1,8 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import { initScrollEffects } from './utils/scrollEffects'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.jsx';
+import { initScrollEffects } from './utils/scrollEffects';
 
 // Initialize advanced parallax and reveal effects
 setTimeout(() => {
@@ -12,5 +12,6 @@ setTimeout(() => {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
-  </StrictMode>,
-)
+  </StrictMode>
+);
+
