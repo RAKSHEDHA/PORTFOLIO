@@ -6,7 +6,7 @@ import Experience from './components/Experience';
 import TechStack from './components/TechStack';
 import Navbar from './components/Navbar';
 import ProjectsSection from './components/ProjectsSection';
-import ServicesSection from './components/ServicesSection';
+import AchievementsSection from './components/AchievementsSection';
 import ContactSection from './components/ContactSection'; 
 import RadaAssistant from './components/RadaAssistant';
 

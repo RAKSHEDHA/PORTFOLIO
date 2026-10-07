@@ -1,5 +1,11 @@
 {
   "name": "Rakshedha Balachander",
-  "roles": ["AI Engineer", "Software Developer", "Freelancer"],
-  "bio": "I build AI-powered web applications that turn complex data into actionable insights for businesses and individuals."
+
+  "roles": [
+    "Business Analyst",
+    "Product Enthusiast",
+    "Technology Professional"
+  ],
+
+  "bio": "I combine business analysis, product thinking, data, and technology to understand problems, improve user experiences, and turn ideas into practical solutions."
 }

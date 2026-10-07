@@ -88,7 +88,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-wrap gap-3 mt-auto z-30"
             >
-              {['Software Engineer', 'AI Engineer', 'Freelancer'].map((tech, index) => (
+              {['Business Analyst', 'Product Manager', 'Product Operations'].map((role, index) => (
                 <span key={index} className="px-2 py-2 bg-white border-2 border-black text-black font-black text-[10px] tracking-widest uppercase shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 transition-all cursor-default">
                   {tech}
                 </span>
